@@ -1,0 +1,10 @@
+# Twitch - Greenhouse
+name: Twitch
+career_urls:
+  - https://boards.greenhouse.io/twitch
+ats_type: greenhouse
+enabled: true
+deny_filters:
+  - Senior
+  - Staff
+  - Principal

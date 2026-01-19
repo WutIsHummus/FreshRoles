@@ -1,0 +1,13 @@
+# Cisco - SmartRecruiters
+name: Cisco
+career_urls:
+  - https://jobs.smartrecruiters.com/Cisco
+ats_type: smartrecruiters
+enabled: true
+keyword_filters:
+  - intern
+  - internship
+deny_filters:
+  - Senior
+  - Staff
+  - Principal

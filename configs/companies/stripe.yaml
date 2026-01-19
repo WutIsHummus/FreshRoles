@@ -1,0 +1,18 @@
+# Example company: Stripe (uses Greenhouse)
+name: Stripe
+career_urls:
+  - https://boards.greenhouse.io/stripe
+ats_type: greenhouse
+country: US
+allowed_locations:
+  - Remote
+  - San Francisco
+  - New York
+keyword_filters: []
+deny_filters:
+  - Senior
+  - Staff
+  - Principal
+allow_html_fallback: true
+max_rps: 1.0
+enabled: true

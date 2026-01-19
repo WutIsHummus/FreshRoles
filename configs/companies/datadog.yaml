@@ -1,0 +1,10 @@
+# Datadog - Greenhouse
+name: Datadog
+career_urls:
+  - https://boards.greenhouse.io/datadog
+ats_type: greenhouse
+enabled: true
+deny_filters:
+  - Senior
+  - Staff
+  - Principal

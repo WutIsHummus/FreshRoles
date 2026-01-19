@@ -1,0 +1,13 @@
+# Apple
+name: Apple
+career_urls:
+  - https://jobs.apple.com
+ats_type: null
+enabled: true
+keyword_filters:
+  - intern
+  - internship
+deny_filters:
+  - Senior
+  - Staff
+  - Principal

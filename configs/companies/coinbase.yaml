@@ -1,0 +1,10 @@
+# Coinbase - Greenhouse
+name: Coinbase
+career_urls:
+  - https://boards.greenhouse.io/coinbase
+ats_type: greenhouse
+enabled: true
+deny_filters:
+  - Senior
+  - Staff
+  - Principal

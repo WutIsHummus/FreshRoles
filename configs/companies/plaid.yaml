@@ -1,0 +1,10 @@
+# Plaid - Greenhouse
+name: Plaid
+career_urls:
+  - https://boards.greenhouse.io/plaid
+ats_type: greenhouse
+enabled: true
+deny_filters:
+  - Senior
+  - Staff
+  - Principal

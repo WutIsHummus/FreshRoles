@@ -1,0 +1,10 @@
+# Linear - Ashby
+name: Linear
+career_urls:
+  - https://jobs.ashbyhq.com/linear
+ats_type: ashby
+enabled: true
+deny_filters:
+  - Senior
+  - Staff
+  - Principal

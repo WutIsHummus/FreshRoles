@@ -1,0 +1,10 @@
+# Robinhood - Greenhouse
+name: Robinhood
+career_urls:
+  - https://boards.greenhouse.io/robinhood
+ats_type: greenhouse
+enabled: true
+deny_filters:
+  - Senior
+  - Staff
+  - Principal

@@ -1,0 +1,27 @@
+[
+    {
+        "id": "abc123-def456",
+        "text": "Software Engineer Intern",
+        "createdAt": 1736899200000,
+        "hostedUrl": "https://jobs.lever.co/testcompany/abc123-def456",
+        "applyUrl": "https://jobs.lever.co/testcompany/abc123-def456/apply",
+        "categories": {
+            "location": "San Francisco, CA",
+            "department": "Engineering",
+            "team": "Backend",
+            "commitment": "Internship"
+        }
+    },
+    {
+        "id": "ghi789-jkl012",
+        "text": "Product Manager",
+        "createdAt": 1736812800000,
+        "hostedUrl": "https://jobs.lever.co/testcompany/ghi789-jkl012",
+        "applyUrl": "https://jobs.lever.co/testcompany/ghi789-jkl012/apply",
+        "categories": {
+            "location": "Remote",
+            "department": "Product",
+            "commitment": "Full-time"
+        }
+    }
+]

@@ -1,0 +1,10 @@
+# Notion - Greenhouse
+name: Notion
+career_urls:
+  - https://boards.greenhouse.io/notion
+ats_type: greenhouse
+enabled: true
+deny_filters:
+  - Senior
+  - Staff
+  - Principal

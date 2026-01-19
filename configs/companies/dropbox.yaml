@@ -1,0 +1,10 @@
+# Dropbox - Greenhouse
+name: Dropbox
+career_urls:
+  - https://boards.greenhouse.io/dropbox
+ats_type: greenhouse
+enabled: true
+deny_filters:
+  - Senior
+  - Staff
+  - Principal

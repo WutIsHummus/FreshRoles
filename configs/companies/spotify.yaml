@@ -1,0 +1,10 @@
+# Spotify - Greenhouse
+name: Spotify
+career_urls:
+  - https://boards.greenhouse.io/spotify
+ats_type: greenhouse
+enabled: true
+deny_filters:
+  - Senior
+  - Staff
+  - Principal

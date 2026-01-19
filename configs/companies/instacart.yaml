@@ -1,0 +1,10 @@
+# Instacart - Greenhouse
+name: Instacart
+career_urls:
+  - https://boards.greenhouse.io/instacart
+ats_type: greenhouse
+enabled: true
+deny_filters:
+  - Senior
+  - Staff
+  - Principal

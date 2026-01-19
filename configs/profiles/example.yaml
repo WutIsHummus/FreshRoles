@@ -1,0 +1,47 @@
+# Example Profile - Software Engineering Intern
+# Copy this file and customize it for your job search
+
+name: example
+
+# Target roles - what job titles are you looking for?
+desired_roles:
+  - Software Engineer Intern
+  - Software Engineering Intern
+  - SWE Intern
+  - Backend Intern
+  - Full Stack Intern
+  - Developer Intern
+
+# Keywords that MUST appear (case-insensitive)
+must_have_keywords:
+  - intern
+
+# Keywords that must NOT appear (filters out senior roles, etc.)
+must_not_keywords:
+  - senior
+  - staff
+  - principal
+  - lead
+  - manager
+  - 5+ years
+  - 3+ years
+
+# Preferred locations (US cities, states, or "Remote")
+preferred_locations:
+  - United States
+  - Remote
+  - California
+  - Texas
+  - New York
+
+# Remote preference: remote, hybrid, onsite, or any
+remote_preference: remote
+
+# Minimum score threshold (0.0 to 1.0)
+# Lower = more results, Higher = stricter matching
+min_score_threshold: 0.15
+
+# Scoring weights (must sum to 1.0)
+vector_weight: 0.40   # AI semantic matching
+keyword_weight: 0.45  # Exact keyword matching
+recency_weight: 0.15  # Prefer newer postings

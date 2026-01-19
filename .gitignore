@@ -1,0 +1,44 @@
+# Dependencies
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Database
+freshroles.db
+
+# Browser profile (contains session data)
+linkedin_profile/
+playwright_profile/
+
+# Cookies (contains sensitive auth data)
+cookies.json
+
+# Environment
+.env
+.env.local
+
+# Personal profiles (only example.yaml is tracked)
+configs/profiles/*.yaml
+!configs/profiles/example.yaml
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+last_response.html
+debug_*.html
+
+# Test artifacts
+.pytest_cache/
+.coverage
+htmlcov/

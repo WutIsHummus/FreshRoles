@@ -1,0 +1,10 @@
+# Mercury - Ashby
+name: Mercury
+career_urls:
+  - https://jobs.ashbyhq.com/mercury
+ats_type: ashby
+enabled: true
+deny_filters:
+  - Senior
+  - Staff
+  - Principal

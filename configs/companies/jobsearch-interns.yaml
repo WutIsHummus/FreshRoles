@@ -1,0 +1,18 @@
+# Job Search - Indeed and Google Jobs
+# This config enables searching job engines for intern roles
+name: JobSearch-Interns
+career_urls:
+  - https://www.indeed.com
+ats_type: null  # Special search engine mode
+enabled: true
+keyword_filters:
+  - software engineer intern
+  - software engineering intern
+  - backend intern
+  - frontend intern
+deny_filters:
+  - Senior
+  - Staff
+  - Principal
+  - Lead
+  - Manager

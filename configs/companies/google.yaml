@@ -1,0 +1,13 @@
+# Google - Custom
+name: Google
+career_urls:
+  - https://careers.google.com
+ats_type: null
+enabled: true
+keyword_filters:
+  - intern
+  - internship
+deny_filters:
+  - Senior
+  - Staff
+  - Principal

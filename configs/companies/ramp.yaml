@@ -1,0 +1,10 @@
+# Ramp - Ashby
+name: Ramp
+career_urls:
+  - https://jobs.ashbyhq.com/ramp
+ats_type: ashby
+enabled: true
+deny_filters:
+  - Senior
+  - Staff
+  - Principal

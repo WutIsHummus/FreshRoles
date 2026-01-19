@@ -1,0 +1,13 @@
+# Microsoft - Workday
+name: Microsoft
+career_urls:
+  - https://careers.microsoft.com
+ats_type: workday
+enabled: true
+keyword_filters:
+  - intern
+  - internship
+deny_filters:
+  - Senior
+  - Staff
+  - Principal

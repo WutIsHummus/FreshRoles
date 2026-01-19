@@ -1,0 +1,49 @@
+{
+    "jobs": [
+        {
+            "id": 4012345,
+            "title": "Software Engineer Intern",
+            "updated_at": "2026-01-15T10:00:00Z",
+            "absolute_url": "https://boards.greenhouse.io/testcompany/jobs/4012345",
+            "location": {
+                "name": "San Francisco, CA (Remote)"
+            },
+            "departments": [
+                {
+                    "id": 1001,
+                    "name": "Engineering"
+                }
+            ]
+        },
+        {
+            "id": 4012346,
+            "title": "Backend Engineer",
+            "updated_at": "2026-01-14T09:00:00Z",
+            "absolute_url": "https://boards.greenhouse.io/testcompany/jobs/4012346",
+            "location": {
+                "name": "New York, NY"
+            },
+            "departments": [
+                {
+                    "id": 1001,
+                    "name": "Engineering"
+                }
+            ]
+        },
+        {
+            "id": 4012347,
+            "title": "Senior Software Engineer",
+            "updated_at": "2026-01-13T08:00:00Z",
+            "absolute_url": "https://boards.greenhouse.io/testcompany/jobs/4012347",
+            "location": {
+                "name": "Seattle, WA"
+            },
+            "departments": [
+                {
+                    "id": 1002,
+                    "name": "Platform"
+                }
+            ]
+        }
+    ]
+}

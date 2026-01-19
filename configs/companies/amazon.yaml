@@ -1,0 +1,13 @@
+# Amazon - Workday
+name: Amazon
+career_urls:
+  - https://amazon.jobs
+ats_type: workday
+enabled: true
+keyword_filters:
+  - intern
+  - internship
+deny_filters:
+  - Senior
+  - Staff
+  - Principal

@@ -1,0 +1,10 @@
+# Reddit - Greenhouse
+name: Reddit
+career_urls:
+  - https://boards.greenhouse.io/reddit
+ats_type: greenhouse
+enabled: true
+deny_filters:
+  - Senior
+  - Staff
+  - Principal

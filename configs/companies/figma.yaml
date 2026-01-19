@@ -1,0 +1,17 @@
+# Example company: Figma (uses Lever)
+name: Figma
+career_urls:
+  - https://jobs.lever.co/figma
+ats_type: lever
+country: US
+allowed_locations:
+  - Remote
+  - San Francisco
+keyword_filters: []
+deny_filters:
+  - Senior
+  - Staff
+  - Lead
+allow_html_fallback: true
+max_rps: 1.0
+enabled: true
