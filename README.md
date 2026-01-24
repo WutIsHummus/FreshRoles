@@ -18,7 +18,7 @@ FreshRoles monitors LinkedIn for new job postings, scores them against your prof
 
 ```bash
 # Clone the repo
-git clone https://github.com/YOUR_USERNAME/FreshRoles.git
+git clone https://github.com/WutIsHummus/FreshRoles.git
 cd FreshRoles
 
 # Create virtual environment
