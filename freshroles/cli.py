@@ -2,8 +2,13 @@
 
 import asyncio
 import json
+import os
 from datetime import datetime, timedelta
 from pathlib import Path
+
+# Load .env file
+from dotenv import load_dotenv
+load_dotenv()
 
 import click
 from rich.console import Console
@@ -449,15 +454,16 @@ async def _scan_linkedin_async(ctx, query: str, location: str, hours: int, profi
 @click.option("--query", "-q", default="software engineer intern", help="Job search query")
 @click.option("--location", "-l", default="United States", help="Location filter")
 @click.option("--interval", default=300, help="Interval in seconds (default: 5m)")
-@click.option("--profile", "-p", default="configs/profiles/alperen.yaml", help="Profile to match against")
-@click.option("--ntfy-topic", envvar="FRESHROLES_NTFY_TOPIC", help="ntfy topic/URL for notifications")
+@click.option("--profile", "-p", default="configs/profiles/example.yaml", help="Profile to match against")
+@click.option("--ntfy-topic", envvar="FRESHROLES_NTFY_TOPIC", help="ntfy topic for notifications")
+@click.option("--ntfy-server", envvar="FRESHROLES_NTFY_SERVER", default="https://ntfy.sh", help="ntfy server URL (default: https://ntfy.sh)")
 @click.pass_context
-def monitor(ctx, query: str, location: str, interval: int, profile: str, ntfy_topic: str):
+def monitor(ctx, query: str, location: str, interval: int, profile: str, ntfy_topic: str, ntfy_server: str):
     """Continuously monitor for new jobs and notify."""
-    asyncio.run(_monitor_async(ctx, query, location, interval, profile, ntfy_topic))
+    asyncio.run(_monitor_async(ctx, query, location, interval, profile, ntfy_topic, ntfy_server))
 
 
-async def _monitor_async(ctx, query: str, location: str, interval: int, profile: str, ntfy_topic: str):
+async def _monitor_async(ctx, query: str, location: str, interval: int, profile: str, ntfy_topic: str, ntfy_server: str):
     import concurrent.futures
     import time
     import httpx
@@ -474,7 +480,7 @@ async def _monitor_async(ctx, query: str, location: str, interval: int, profile:
         console.print("[red]Error: --ntfy-topic or FRESHROLES_NTFY_TOPIC environment variable required.[/red]")
         return
     
-    notifier = NtfyNotifier(topic=ntfy_topic)
+    notifier = NtfyNotifier(topic=ntfy_topic, server=ntfy_server)
     
     # Load profile and scorer
     try:
@@ -496,7 +502,7 @@ async def _monitor_async(ctx, query: str, location: str, interval: int, profile:
     async with httpx.AsyncClient() as client:
         try:
             await client.post(
-                f"https://ntfy.sh/{ntfy_topic}",
+                f"{ntfy_server}/{ntfy_topic}",
                 content=f"Monitoring for '{query}' in '{location}'\nInterval: {interval}s".encode("utf-8"),
                 headers={"Title": "FreshRoles Monitor Started", "Tags": "rocket"},
             )
@@ -530,13 +536,20 @@ async def _monitor_async(ctx, query: str, location: str, interval: int, profile:
             
             console.print(f" found {len(jobs)} jobs.")
             
+            # Track seen jobs by source_job_id (like scanner.py's seen_job_ids.json)
+            # This is the raw LinkedIn job ID, not a hash
+            seen_ids = set()
+            with db.get_session() as session:
+                existing_jobs = session.query(JobRecord.source_job_id).all()
+                seen_ids = {j[0] for j in existing_jobs}
+            
             # Log all jobs found from API
             for job in jobs:
-                is_new = not db.job_exists(job.id)
+                is_new = job.source_job_id not in seen_ids
                 status = "[green]NEW[/green]" if is_new else "[dim]seen[/dim]"
                 console.print(f"  {status} {job.source_job_id}: {job.title[:50]} @ {job.company[:25]}")
             
-            new_jobs = [job for job in jobs if not db.job_exists(job.id)]
+            new_jobs = [job for job in jobs if job.source_job_id not in seen_ids]
             
             if new_jobs:
                 console.print(f"[{timestamp}] New jobs: {len(new_jobs)}")

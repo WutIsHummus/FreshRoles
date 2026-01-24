@@ -401,16 +401,23 @@ def search_linkedin_jobs(
     Returns:
         List of JobPosting objects.
     """
+    import os
     from urllib.parse import quote_plus
     
-    # Build search URL with internship filter
-    url = (
-        f"https://www.linkedin.com/jobs/search/?"
-        f"keywords={quote_plus(query)}&"
-        f"location={quote_plus(location)}&"
-        f"f_JT=I&"  # Internship filter
-        f"f_TPR=r{time_hours * 3600}"
-    )
+    # Support LINKEDIN_SEARCH_URL env var like scanner.py
+    env_url = os.getenv("LINKEDIN_SEARCH_URL")
+    if env_url:
+        url = env_url
+        print(f"Using LINKEDIN_SEARCH_URL from env")
+    else:
+        # Build search URL with internship filter
+        url = (
+            f"https://www.linkedin.com/jobs/search/?"
+            f"keywords={quote_plus(query)}&"
+            f"location={quote_plus(location)}&"
+            f"f_JT=I&"  # Internship filter
+            f"f_TPR=r{time_hours * 3600}"
+        )
     
     scraper = LinkedInScraper(cookies_path=cookies_path)
     return scraper.search_sync(url, time_filter_seconds=time_hours * 3600)
