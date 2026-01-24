@@ -400,7 +400,7 @@ async def _scan_linkedin_async(ctx, query: str, location: str, hours: int, profi
         if not json_output:
             console.print(f"[dim]Matching against profile: {profile}[/dim]\n")
         
-        scored = await scorer.score_batch(jobs, min_score=0.15)
+        scored = await scorer.score_batch(jobs, min_score=profile_obj.min_score_threshold)
         jobs = [s.job for s in scored]
     
     # Save to database
@@ -450,11 +450,18 @@ async def _scan_linkedin_async(ctx, query: str, location: str, hours: int, profi
         console.print(f"\n[green]✓ Saved {len(jobs)} jobs to database[/green]")
 
 
+def _get_default_profile():
+    p = Path("configs/profiles/alperen.yaml")
+    if p.exists():
+        return str(p)
+    return "configs/profiles/example.yaml"
+
+
 @cli.command("monitor")
 @click.option("--query", "-q", default="software engineer intern", help="Job search query")
 @click.option("--location", "-l", default="United States", help="Location filter")
 @click.option("--interval", default=300, help="Interval in seconds (default: 5m)")
-@click.option("--profile", "-p", default="configs/profiles/example.yaml", help="Profile to match against")
+@click.option("--profile", "-p", default=_get_default_profile, help="Profile to match against")
 @click.option("--ntfy-topic", envvar="FRESHROLES_NTFY_TOPIC", help="ntfy topic for notifications")
 @click.option("--ntfy-server", envvar="FRESHROLES_NTFY_SERVER", default="https://ntfy.sh", help="ntfy server URL (default: https://ntfy.sh)")
 @click.pass_context
