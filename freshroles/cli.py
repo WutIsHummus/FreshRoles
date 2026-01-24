@@ -561,14 +561,24 @@ async def _monitor_async(ctx, query: str, location: str, interval: int, profile:
             if new_jobs:
                 console.print(f"[{timestamp}] New jobs: {len(new_jobs)}")
                 
-                # Score new jobs
-                scored_jobs = await scorer.score_batch(new_jobs, min_score=profile_obj.min_score_threshold)
+                # Score all new jobs (min_score=0.0) to show user everything
+                all_scored = await scorer.score_batch(new_jobs, min_score=0.0)
                 
-                if scored_jobs:
-                    console.print(f"[{timestamp}] Matches found: {len(scored_jobs)}")
+                matches = []
+                for scored in all_scored:
+                    is_match = scored.final_score >= profile_obj.min_score_threshold
+                    
+                    score_color = "green" if is_match else "yellow" if scored.final_score > 0.0 else "dim"
+                    console.print(f"  [{score_color}]{scored.final_score:.0%}[/{score_color}] {scored.job.title[:50]} @ {scored.job.company[:25]}")
+                    
+                    if is_match:
+                        matches.append(scored)
+
+                if matches:
+                    console.print(f"[{timestamp}] Matches above threshold: {len(matches)}")
                     
                     # Notify and Save
-                    for scored in scored_jobs:
+                    for scored in matches:
                         # Save to DB - create company if needed
                         company_record = db.get_company_by_name(scored.job.company)
                         if not company_record:
@@ -578,7 +588,7 @@ async def _monitor_async(ctx, query: str, location: str, interval: int, profile:
                         # Send notification
                         success = await notifier.send(scored)
                         status = "Sent" if success else "Failed"
-                        console.print(f"  -> {scored.job.title} ({scored.final_score:.0%}) - {status}")
+                        console.print(f"  -> Notification: {status}")
                 else:
                     console.print(f"[{timestamp}] No matches above threshold.")
             
